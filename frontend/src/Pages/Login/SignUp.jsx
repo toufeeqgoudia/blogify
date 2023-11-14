@@ -38,9 +38,8 @@ const SignUp = (props) => {
         password: userData.password,
       });
 
-      console.log("response: ", response);
       if (response.status === 200) {
-        navigate("/home");
+        navigate("/home", {state: response.data.token});
       }
     } catch (error) {
       setFetchError("failed to sign up.");
