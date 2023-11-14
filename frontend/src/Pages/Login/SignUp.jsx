@@ -27,11 +27,13 @@ const SignUp = (props) => {
     try {
       setLoading(true);
 
-      await instance.post("/api/register/", {
-        username: userData.username,
-        email: userData.email,
-        password: userData.password,
-      });
+      await instance
+        .post("/api/register/", {
+          username: userData.username,
+          email: userData.email,
+          password: userData.password,
+        })
+        .then((res) => res.data);
 
       const response = await instance.post("/api/login/", {
         email: userData.email,
@@ -39,8 +41,9 @@ const SignUp = (props) => {
       });
 
       if (response.status === 200) {
-        navigate("/home", {state: response.data.token});
+        navigate("/", { state: response.data.token });
       }
+      localStorage.setItem("token", response.data.token);
     } catch (error) {
       setFetchError("failed to sign up.");
       console.log("Error: ", error);

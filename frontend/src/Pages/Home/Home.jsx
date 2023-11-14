@@ -1,41 +1,18 @@
-import { useState, useEffect } from "react";
-import { instance } from "../../utils/apiService";
-import { useLocation } from "react-router-dom";
+import { useAuth } from "../../Hooks/useAuth";
 
 const Home = () => {
-  const [users, setUsers] = useState({});
-  const location = useLocation();
-  const token = location.state;
+  const {user} = useAuth()
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await instance.get("/api/user/", {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Token ${token}`,
-          },
-        });
-
-        console.log(response);
-
-        setUsers(response.data);
-      } catch (error) {
-        console.log("Error: ", error);
-      }
-    };
-
-    fetchUserData();
-  }, [token]);
+  console.log('users: ', user)
 
   return (
     <div className="flex flex-col justify-center">
       <h1>welcome to blogify.</h1>
 
-      <p>id: {users.id}</p>
-      <p>username: {users.username}</p>
-      <p>email: {users.email}</p>
-      <img src={users.profile_img} className="w-20" />
+      <p>id: {user.id}</p>
+      <p>username: {user.username}</p>
+      <p>email: {user.email}</p>
+      <img src={user.profile_img} className="w-20" />
     </div>
   );
 };
