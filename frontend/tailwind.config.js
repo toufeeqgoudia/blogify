@@ -5,6 +5,9 @@ export default {
     extend: {
       boxShadow: {
         '3xl': '0 20px 45px 20px rgba(0, 0, 0, 0.15)',
+      },
+      margin: {
+        25: '25%',
       }
     },
   },
