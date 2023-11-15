@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 const SignUp = (props) => {
   const [userData, setUserData] = useState({
+    full_name: "",
     username: "",
     email: "",
     password: "",
@@ -29,6 +30,7 @@ const SignUp = (props) => {
 
       await instance
         .post("/api/register/", {
+          full_name: userData.full_name,
           username: userData.username,
           email: userData.email,
           password: userData.password,
@@ -70,6 +72,15 @@ const SignUp = (props) => {
                 <p>{fetchError}</p>
               </div>
             )}
+            <p className="mb-2">full name.</p>
+            <input
+              type="text"
+              name="full_name"
+              placeholder="full name"
+              className="w-4/5 outline-none p-1 mb-5 text-center"
+              autoComplete="off"
+              onChange={handleChange}
+            />
             <p className="mb-2">username.</p>
             <input
               type="text"

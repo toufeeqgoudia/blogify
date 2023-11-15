@@ -8,6 +8,8 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
+    author = UserSerializer() # to access the user data who made the post
+
     class Meta:
         model = Post
         fields = '__all__'

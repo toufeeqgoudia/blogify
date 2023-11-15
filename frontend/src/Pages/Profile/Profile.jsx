@@ -44,9 +44,9 @@ const Profile = () => {
           </div>
 
           <div className="w-1/2 flex flex-col items-center my-5">
-            <p className="self-start">name.</p>
+            <p className="self-start">full name.</p>
             <form className="w-full flex">
-              <input className="w-full border-2 outline-none py-1 px-2 rounded-s-lg" placeholder='user.name' />
+              <input className="w-full border-2 outline-none py-1 px-2 rounded-s-lg" placeholder={user.full_name} />
               <button className="bg-emerald-500 px-2 rounded-e-lg">Change</button>
             </form>
           </div>
