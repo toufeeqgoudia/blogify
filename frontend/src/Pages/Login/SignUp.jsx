@@ -42,10 +42,13 @@ const SignUp = (props) => {
         password: userData.password,
       });
 
-      if (response.status === 200) {
-        navigate("/", { state: response.data.token });
-      }
       localStorage.setItem("token", response.data.token);
+
+      if (response.status === 200) {
+        navigate("/");
+      }
+
+      window.location.reload()
     } catch (error) {
       setFetchError("failed to sign up.");
       console.log("Error: ", error);

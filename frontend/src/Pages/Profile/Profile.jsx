@@ -1,22 +1,18 @@
 import { useAuth } from "../../Hooks/useAuth";
 import { instance } from "../../utils/apiService";
-import { useNavigate } from "react-router-dom";
 
 const baseUrl = import.meta.env.VITE_BASE_URL
 
 const Profile = () => {
   const { user } = useAuth()
-  const navigate = useNavigate();
 
   console.log(user)
 
   const logout = async () => {
     try {
-      const response = await instance.post("/api/logout/");
+      await instance.post("/api/logout/");
       localStorage.removeItem("token"); // remove token
-      if (response.status === 200) {
-        navigate("/login");
-      }
+      window.location.reload()
     } catch (error) {
       console.log("error logging out: ", error);
     }

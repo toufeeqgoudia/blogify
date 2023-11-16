@@ -4,6 +4,13 @@ import { useAuth } from "../../Hooks/useAuth";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { IoAddCircleOutline } from "react-icons/io5";
 
+const descStyles = {
+  WebkitLineClamp: 5,
+  WebkitBoxOrient: "vertical",
+  overflow: "hidden",
+  display: "-webkit-box",
+};
+
 const Myblogs = () => {
   const [posts, setPosts] = useState([]);
   const { user } = useAuth();
@@ -19,6 +26,20 @@ const Myblogs = () => {
 
   const userPosts = posts.filter((post) => post.author.id === user.id);
 
+  const formatPostDate = (dateString) => {
+    const options = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    };
+  
+    const formattedDate = new Intl.DateTimeFormat('en-GB', options).format(new Date(dateString));
+    return formattedDate.replace(',', ''); // Remove the comma between date and time
+  };
+
   return (
     <div className="w-3/4 h-full p-5 flex flex-col ml-25">
       <h2 className="text-lg font-semibold self-center">my blogs.</h2>
@@ -27,7 +48,7 @@ const Myblogs = () => {
       <div>
         {userPosts.map((post) => (
           <div key={post.id} className="w-full flex">
-            <div className="w-full h-40 p-3 my-5 overflow-hidden border-2 border-slate-200 rounded-s-md cursor-pointer">
+            <div className="w-full h-45 p-3 my-5 overflow-hidden border-2 border-slate-200 rounded-s-md">
               <div className="flex items-center my-1">
                 <img
                   src={post.author.profile_img}
@@ -39,11 +60,11 @@ const Myblogs = () => {
               </div>
               <h4 className="text-lg font-medium">
                 {post.title}
-                <span className="text-xs"> - {post.date_posted}</span>
+                <span className="text-xs"> - {formatPostDate(post.date_posted)}</span>
               </h4>
-              <p className="text-sm">{post.content}</p>
+              <p className="text-sm" style={descStyles}>{post.content}</p>
             </div>
-            <div className="w-1/12 h-40 my-5 flex flex-col justify-evenly items-center bg-slate-200 rounded-e-md">
+            <div className="w-1/12 h-45 my-5 flex flex-col justify-evenly items-center bg-slate-200 rounded-e-md">
               <FaEdit className="cursor-pointer" />
               <FaTrash className="text-red-600 cursor-pointer" />
             </div>

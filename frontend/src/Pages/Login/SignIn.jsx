@@ -28,12 +28,13 @@ const SignIn = (props) => {
         password: userData.password,
       });
 
-      console.log('response: ', response)
+      localStorage.setItem("token", response.data.token);
 
       if (response.status === 200) {
-        navigate("/", { state: response.data.token });
+        navigate("/");
       }
-      localStorage.setItem("token", response.data.token);
+
+      window.location.reload()
     } catch (error) {
       setFetchError("failed to sign in.");
       console.log("Error: ", error);
