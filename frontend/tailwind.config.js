@@ -7,7 +7,7 @@ export default {
         'b': '700px',
       },
       height: {
-        '45': '185px',
+        '45': '175px',
       },
       boxShadow: {
         '3xl': '0 20px 45px 20px rgba(0, 0, 0, 0.15)',

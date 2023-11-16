@@ -24,7 +24,7 @@ const PostDetails = ({ post, isOpen, onClose, formatPostDate }) => {
             </div>
             <IoCloseCircleOutline
               className="text-2xl cursor-pointer text-slate-300"
-              onClick={onClose}
+              onClick={handleClose}
             />
           </div>
           <hr className="mb-5 mt-5" />

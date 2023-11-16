@@ -3,9 +3,12 @@ import { instance } from "../../utils/apiService";
 import { useAuth } from "../../Hooks/useAuth";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { IoAddCircleOutline } from "react-icons/io5";
+import DeletePost from "../../Components/DeletePost";
+import EditPost from "../../Components/EditPost";
+import CreatePost from "../../Components/CreatePost";
 
 const descStyles = {
-  WebkitLineClamp: 5,
+  WebkitLineClamp: 4,
   WebkitBoxOrient: "vertical",
   overflow: "hidden",
   display: "-webkit-box",
@@ -13,69 +16,106 @@ const descStyles = {
 
 const Myblogs = () => {
   const [posts, setPosts] = useState([]);
+  const [selectedId, setSelectedId] = useState(null);
+  const [delDialog, setDelDialog] = useState(false);
   const { user } = useAuth();
 
   useEffect(() => {
     const getPostData = async () => {
       const response = await instance.get(`/api/posts/`);
-      setPosts(response.data);
+      const sortedPosts = response.data.sort(
+        (a, b) => new Date(b.date_posted) - new Date(a.date_posted)
+      );
+      setPosts(sortedPosts);
     };
 
     getPostData();
   }, []);
 
+  /* The line `const userPosts = posts.filter((post) => post.author.id === user.id);` is filtering the
+  `posts` array to only include posts where the `author.id` matches the `user.id`. It is essentially
+  creating a new array called `userPosts` that contains only the posts authored by the current user. */
   const userPosts = posts.filter((post) => post.author.id === user.id);
 
   const formatPostDate = (dateString) => {
     const options = {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-      hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit',
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
     };
-  
-    const formattedDate = new Intl.DateTimeFormat('en-GB', options).format(new Date(dateString));
-    return formattedDate.replace(',', ''); // Remove the comma between date and time
+
+    const formattedDate = new Intl.DateTimeFormat("en-GB", options).format(
+      new Date(dateString)
+    );
+    return formattedDate.replace(",", ""); // Remove the comma between date and time
+  };
+
+  const openDelDialog = (postId) => {
+    setSelectedId(postId);
+    setDelDialog(true);
+  };
+
+  const closeDelDialog = () => {
+    setSelectedId(null);
+    setDelDialog(false);
   };
 
   return (
-    <div className="w-3/4 h-full p-5 flex flex-col ml-25">
-      <h2 className="text-lg font-semibold self-center">my blogs.</h2>
-      <hr />
+    <>
+      <div className="w-3/4 h-full p-5 flex flex-col ml-25">
+        <h2 className="text-lg font-semibold self-center">my blogs.</h2>
+        <hr />
 
-      <div>
-        {userPosts.map((post) => (
-          <div key={post.id} className="w-full flex">
-            <div className="w-full h-45 p-3 my-5 overflow-hidden border-2 border-slate-200 rounded-s-md">
-              <div className="flex items-center my-1">
-                <img
-                  src={post.author.profile_img}
-                  className="w-7 h-7 rounded-full border-2 border-slate-200"
-                />
-                <h3 className="text-lg font-bold ml-4">
-                  {post.author.username}
-                </h3>
+        <div>
+          {userPosts.map((post) => (
+            <div key={post.id} className="w-full flex">
+              <div className="w-full h-45 p-3 my-5 overflow-hidden border-2 border-slate-200 rounded-s-md">
+                <div className="flex items-center my-1">
+                  <img
+                    src={post.author.profile_img}
+                    className="w-7 h-7 rounded-full border-2 border-slate-200"
+                  />
+                  <h3 className="text-lg font-bold ml-4">
+                    {post.author.username}
+                  </h3>
+                </div>
+                <h4 className="text-lg font-medium">
+                  {post.title}
+                  <span className="text-xs">
+                    {" "}
+                    - {formatPostDate(post.date_posted)}
+                  </span>
+                </h4>
+                <p className="text-sm" style={descStyles}>
+                  {post.content}
+                </p>
               </div>
-              <h4 className="text-lg font-medium">
-                {post.title}
-                <span className="text-xs"> - {formatPostDate(post.date_posted)}</span>
-              </h4>
-              <p className="text-sm" style={descStyles}>{post.content}</p>
+              <div className="w-1/12 h-45 my-5 flex flex-col justify-evenly items-center bg-slate-200 rounded-e-md">
+                <FaEdit className="cursor-pointer" />
+                <FaTrash
+                  className="text-red-600 cursor-pointer"
+                  onClick={() => openDelDialog(post.id)}
+                />
+              </div>
             </div>
-            <div className="w-1/12 h-45 my-5 flex flex-col justify-evenly items-center bg-slate-200 rounded-e-md">
-              <FaEdit className="cursor-pointer" />
-              <FaTrash className="text-red-600 cursor-pointer" />
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <button className="p-3 w-32 flex self-end items-center justify-evenly text-white bg-emerald-500 fixed rounded-full bottom-10 right-10 z-10">
+          <IoAddCircleOutline className="text-2xl font-bold text-white" />{" "}
+          create.
+        </button>
       </div>
-
-      <button className="p-3 w-32 flex self-end items-center justify-evenly text-white bg-emerald-500 fixed rounded-full bottom-10 right-10 z-10">
-        <IoAddCircleOutline className="text-2xl font-bold text-white" /> create.
-      </button>
-    </div>
+      <DeletePost
+        selectedId={selectedId}
+        isOpen={delDialog}
+        onClose={closeDelDialog}
+      />
+      <EditPost />
+      <CreatePost />
+    </>
   );
 };
 
