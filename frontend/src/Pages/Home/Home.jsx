@@ -3,6 +3,7 @@ import Navbar from "../../Components/Navbar";
 import AllBlogs from "../AllBlogs/AllBlogs";
 import Myblogs from "../MyBlogs/Myblogs";
 import Profile from "../Profile/Profile";
+import EditPost from "../MyBlogs/EditPost";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Routes>
         <Route path="/" element={<AllBlogs />} />
         <Route path="/myblogs" element={<Myblogs />} />
+        <Route path="/myblogs/edit/:id" element={<EditPost />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>

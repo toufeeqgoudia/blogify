@@ -12,4 +12,12 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ['id', 'author', 'title', 'content', 'date_posted']
+
+        read_only_fields = ['author']
+
+
+class PostUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ['title', 'content']

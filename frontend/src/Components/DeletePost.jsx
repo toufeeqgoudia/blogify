@@ -2,7 +2,7 @@ import { instance } from "../utils/apiService";
 import PropTypes from "prop-types";
 
 const DeletePost = ({ selectedId, isOpen, onClose }) => {
-  const deletePost = async () => {
+  const handleDelete = async () => {
     try {
       await instance.delete(`/api/post/${selectedId}/`);
       window.location.reload();
@@ -13,8 +13,8 @@ const DeletePost = ({ selectedId, isOpen, onClose }) => {
   };
 
   const handleClose = () => {
-    onClose();
-  };
+    onClose()
+  }
 
   return (
     <>
@@ -36,7 +36,7 @@ const DeletePost = ({ selectedId, isOpen, onClose }) => {
             </button>
             <button
               className="w-2/5 px-5 font-medium py-2 rounded-lg bg-red-600 text-white"
-              onClick={deletePost}
+              onClick={handleDelete}
             >
               Delete
             </button>

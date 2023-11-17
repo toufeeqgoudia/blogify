@@ -2,7 +2,7 @@
 
 const CreatePost = () => {
   return (
-    <dialog>CreatePost</dialog>
+    <div>CreatePost</div>
   )
 }
 

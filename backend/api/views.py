@@ -6,7 +6,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
-from .serializers import UserSerializer, PostSerializer
+from .serializers import UserSerializer, PostSerializer, PostUpdateSerializer
 from .models import User, Post
 
 @csrf_exempt
@@ -66,7 +66,7 @@ class PostDetailView(APIView):
     def put(self, request, pk):
         try:
             post = Post.objects.get(pk=pk)
-            serializer = PostSerializer(post, data=request.data)
+            serializer = PostUpdateSerializer(post, data=request.data)
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data)

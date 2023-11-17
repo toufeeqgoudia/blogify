@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { instance } from "../../utils/apiService";
 import { useAuth } from "../../Hooks/useAuth";
+import { useNavigate } from 'react-router-dom'
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { IoAddCircleOutline } from "react-icons/io5";
 import DeletePost from "../../Components/DeletePost";
-import EditPost from "../../Components/EditPost";
-import CreatePost from "../../Components/CreatePost";
 
 const descStyles = {
   WebkitLineClamp: 4,
@@ -16,10 +15,14 @@ const descStyles = {
 
 const Myblogs = () => {
   const [posts, setPosts] = useState([]);
-  const [selectedId, setSelectedId] = useState(null);
+  const [delId, setDelId] = useState(null);
   const [delDialog, setDelDialog] = useState(false);
+  const navigate = useNavigate()
   const { user } = useAuth();
 
+  /* The `useEffect` hook is used to perform side effects in a functional component. In this case, it
+  is used to fetch the data for the posts from the API and update the state variable `posts` with
+  the fetched data. */
   useEffect(() => {
     const getPostData = async () => {
       const response = await instance.get(`/api/posts/`);
@@ -37,6 +40,12 @@ const Myblogs = () => {
   creating a new array called `userPosts` that contains only the posts authored by the current user. */
   const userPosts = posts.filter((post) => post.author.id === user.id);
 
+  /**
+   * The function `formatPostDate` takes a date string as input and returns a formatted date and time
+   * string in the format "dd/mm/yyyy hh:mm:ss".
+   * @returns The function `formatPostDate` returns a formatted date string without the comma between
+   * the date and time.
+   */
   const formatPostDate = (dateString) => {
     const options = {
       year: "numeric",
@@ -53,15 +62,26 @@ const Myblogs = () => {
     return formattedDate.replace(",", ""); // Remove the comma between date and time
   };
 
+  /**
+   * The function `openDelDialog` sets the selected post ID and opens the delete dialog.
+   */
   const openDelDialog = (postId) => {
-    setSelectedId(postId);
+    setDelId(postId);
     setDelDialog(true);
   };
 
+  /**
+   * The `closeDelDialog` function sets the selectedId to null and closes the delete dialog.
+   */
   const closeDelDialog = () => {
-    setSelectedId(null);
+    setDelId(null);
     setDelDialog(false);
   };
+
+  const openEditPost = (postId) => {
+    navigate(`/myblogs/edit/${postId}`, {state: postId})
+  };
+
 
   return (
     <>
@@ -94,7 +114,10 @@ const Myblogs = () => {
                 </p>
               </div>
               <div className="w-1/12 h-45 my-5 flex flex-col justify-evenly items-center bg-slate-200 rounded-e-md">
-                <FaEdit className="cursor-pointer" />
+                <FaEdit
+                  className="cursor-pointer"
+                  onClick={() => openEditPost(post.id)}
+                />
                 <FaTrash
                   className="text-red-600 cursor-pointer"
                   onClick={() => openDelDialog(post.id)}
@@ -109,12 +132,10 @@ const Myblogs = () => {
         </button>
       </div>
       <DeletePost
-        selectedId={selectedId}
+        selectedId={delId}
         isOpen={delDialog}
         onClose={closeDelDialog}
       />
-      <EditPost />
-      <CreatePost />
     </>
   );
 };
