@@ -4,6 +4,7 @@ import AllBlogs from "../AllBlogs/AllBlogs";
 import Myblogs from "../MyBlogs/Myblogs";
 import Profile from "../Profile/Profile";
 import EditPost from "../MyBlogs/EditPost";
+import CreatePost from "../MyBlogs/CreatePost";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
         <Route path="/" element={<AllBlogs />} />
         <Route path="/myblogs" element={<Myblogs />} />
         <Route path="/myblogs/edit/:id" element={<EditPost />} />
+        <Route path="/myblogs/create" element={<CreatePost />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>

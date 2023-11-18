@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { instance } from "../../utils/apiService";
 import { useAuth } from "../../Hooks/useAuth";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { IoAddCircleOutline } from "react-icons/io5";
 import DeletePost from "../../Components/DeletePost";
@@ -17,7 +17,7 @@ const Myblogs = () => {
   const [posts, setPosts] = useState([]);
   const [delId, setDelId] = useState(null);
   const [delDialog, setDelDialog] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { user } = useAuth();
 
   /* The `useEffect` hook is used to perform side effects in a functional component. In this case, it
@@ -25,7 +25,10 @@ const Myblogs = () => {
   the fetched data. */
   useEffect(() => {
     const getPostData = async () => {
-      const response = await instance.get(`/api/posts/`);
+      const token = localStorage.getItem("token");
+      const response = await instance.get(`/api/posts/`, {
+        headers: { Authorization: `Token ${token}` },
+      });
       const sortedPosts = response.data.sort(
         (a, b) => new Date(b.date_posted) - new Date(a.date_posted)
       );
@@ -79,9 +82,8 @@ const Myblogs = () => {
   };
 
   const openEditPost = (postId) => {
-    navigate(`/myblogs/edit/${postId}`, {state: postId})
+    navigate(`/myblogs/edit/${postId}`, { state: postId });
   };
-
 
   return (
     <>
@@ -126,7 +128,10 @@ const Myblogs = () => {
             </div>
           ))}
         </div>
-        <button className="p-3 w-32 flex self-end items-center justify-evenly text-white bg-emerald-500 fixed rounded-full bottom-10 right-10 z-10">
+        <button
+          className="p-3 w-32 flex self-end items-center justify-evenly text-white bg-emerald-500 fixed rounded-full bottom-10 right-10 z-10"
+          onClick={() => navigate("/myblogs/create")}
+        >
           <IoAddCircleOutline className="text-2xl font-bold text-white" />{" "}
           create.
         </button>

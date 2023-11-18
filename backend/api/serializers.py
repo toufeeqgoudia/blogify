@@ -8,13 +8,11 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-    author = UserSerializer() # to access the user data who made the post
+    author = UserSerializer(read_only=True) # to access the user data who made the post
 
     class Meta:
         model = Post
         fields = ['id', 'author', 'title', 'content', 'date_posted']
-
-        read_only_fields = ['author']
 
 
 class PostUpdateSerializer(serializers.ModelSerializer):

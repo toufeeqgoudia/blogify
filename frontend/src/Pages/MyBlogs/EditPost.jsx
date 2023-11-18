@@ -49,9 +49,7 @@ const EditPost = () => {
     <>
       {post && (
         <div className="w-3/4 h-full p-5 flex flex-col ml-25">
-          <div className="flex justify-center mb-2">
-            <h3 className="text-lg font-medium">edit post.</h3>
-          </div>
+          <h3 className="text-lg font-medium self-center">edit post.</h3>
           <hr />
           <form className="flex flex-col mt-3" onSubmit={handleEdit}>
             <p className="font-medium mb-1">title.</p>
@@ -64,11 +62,17 @@ const EditPost = () => {
             <p className="font-medium mb-1">content.</p>
             <textarea
               name="content"
-              className="w-full max-h-full border-2 outline-none py-1 px-2 mb-2 rounded-lg"
+              className="w-full min-h-full border-2 outline-none py-1 px-2 mb-2 rounded-lg"
               value={editContent}
               onChange={(e) => setEditContent(e.target.value)}
             />
             <div className="flex items-center justify-end my-3">
+              <p
+                className="w-28 text-center cursor-pointer mx-5 font-medium py-2 rounded-lg bg-slate-300"
+                onClick={() => navigate(-1)}
+              >
+                Cancel
+              </p>
               <button
                 className="w-28 px-5 font-medium py-2 rounded-lg bg-black text-white"
                 type="submit"

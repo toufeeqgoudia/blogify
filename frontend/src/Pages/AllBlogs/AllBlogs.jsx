@@ -18,7 +18,10 @@ const AllBlogs = () => {
 
   useEffect(() => {
     const getPostData = async () => {
-      const response = await instance.get("/api/posts/");
+      const token = localStorage.getItem('token')
+      const response = await instance.get("/api/posts/", {
+        headers: {Authorization: `Token ${token}`}
+      });
       const sortedPosts = response.data.sort(
         (a, b) => new Date(b.date_posted) - new Date(a.date_posted)
       );
