@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "../../Components/Navbar";
 import AllBlogs from "../AllBlogs/AllBlogs";
+import PostDetails from "../AllBlogs/PostDetails";
 import Myblogs from "../MyBlogs/Myblogs";
 import Profile from "../Profile/Profile";
 import EditPost from "../MyBlogs/EditPost";
@@ -12,6 +13,7 @@ const Home = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<AllBlogs />} />
+        <Route path="/post/:id" element={<PostDetails />} />
         <Route path="/myblogs" element={<Myblogs />} />
         <Route path="/myblogs/edit/:id" element={<EditPost />} />
         <Route path="/myblogs/create" element={<CreatePost />} />

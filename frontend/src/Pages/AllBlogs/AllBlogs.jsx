@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { instance } from "../../utils/apiService";
 import UserDetails from "../../Components/UserDetails";
-import PostDetails from "../../Components/PostDetails";
 
 const descStyles = {
   WebkitLineClamp: 4,
@@ -14,13 +14,13 @@ const AllBlogs = () => {
   const [posts, setPosts] = useState([]);
   const [selectedPostId, setSelectedPostId] = useState(null);
   const [userDialog, setUserDialog] = useState(false);
-  const [postDialog, setPostDialog] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getPostData = async () => {
-      const token = localStorage.getItem('token')
+      const token = localStorage.getItem("token");
       const response = await instance.get("/api/posts/", {
-        headers: {Authorization: `Token ${token}`}
+        headers: { Authorization: `Token ${token}` },
       });
       const sortedPosts = response.data.sort(
         (a, b) => new Date(b.date_posted) - new Date(a.date_posted)
@@ -31,12 +31,6 @@ const AllBlogs = () => {
     getPostData();
   }, []);
 
-  /**
-   * The function `formatPostDate` takes a date string as input and returns a formatted date and time
-   * string in the format "dd/mm/yyyy hh:mm:ss".
-   * @returns The function `formatPostDate` returns a formatted date string without the comma between
-   * the date and time.
-   */
   const formatPostDate = (dateString) => {
     const options = {
       year: "numeric",
@@ -63,14 +57,8 @@ const AllBlogs = () => {
     setUserDialog(false);
   };
 
-  const openPostDetailsDialog = (postId) => {
-    setSelectedPostId(postId);
-    setPostDialog(true);
-  };
-
-  const closePostDetailsDialog = () => {
-    setSelectedPostId(null);
-    setPostDialog(false);
+  const openPostDetails = (postId) => {
+    navigate(`/post/${postId}`, { state: postId });
   };
 
   return (
@@ -95,7 +83,7 @@ const AllBlogs = () => {
             </div>
             <div
               className="cursor-pointer"
-              onClick={() => openPostDetailsDialog(post.id)}
+              onClick={() => openPostDetails(post.id)}
             >
               <h4 className="text-lg font-medium">
                 {post.title}
@@ -115,12 +103,6 @@ const AllBlogs = () => {
         post={posts.find((post) => post.id === selectedPostId)}
         isOpen={userDialog}
         onClose={closeUserDetailsDialog}
-      />
-      <PostDetails
-        post={posts.find((post) => post.id === selectedPostId)}
-        isOpen={postDialog}
-        onClose={closePostDetailsDialog}
-        formatPostDate={formatPostDate}
       />
     </div>
   );

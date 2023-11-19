@@ -74,11 +74,11 @@ const Profile = () => {
     }
   };
   return (
-    <div className="w-3/4 h-full p-5 flex flex-col ml-25">
+    <div className="w-full h-full p-5 flex flex-col ml-25">
       <h2 className="text-lg font-semibold self-center">profile.</h2>
       <hr />
       <div className="w-full h-full flex flex-col items-center">
-        <div className="w-4/5 h-full flex flex-col items-center my-5">
+        <div className="w-full h-full flex flex-col items-center my-5"> {/** CHANGE FOR SM SCREEN */}
           <div className="w-1/2 flex justify-evenly items-center my-5">
             <div className="w-full h-full flex flex-col">
               <div className="w-24 h-24 rounded-full border-2 border-slate-300 object-cover overflow-hidden mb-3">
