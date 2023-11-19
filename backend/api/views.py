@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.hashers import make_password
 from django.views.decorators.csrf import csrf_exempt
 from .serializers import UserSerializer, PostSerializer, PostUpdateSerializer
 from .models import User, Post
@@ -47,6 +48,32 @@ def user_view(request):
     user = request.user
     serializer = UserSerializer(user)
     return Response(serializer.data)
+
+
+class UserProfileUpdateView(generics.UpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    # permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+        user = User.objects.get(pk=pk)
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
+    
+    def put(self, request, *args, **kwargs):
+        kwargs['partial'] = True
+        user = self.request.user
+        partial = kwargs.pop('partial', False)
+        instance = self.get_object()
+
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        if 'password' in request.data:
+            request.data['password'] = make_password(request.data['password'])
+
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+
+        return Response(serializer.data)
 
 
 class PostListCreateView(generics.ListCreateAPIView):
