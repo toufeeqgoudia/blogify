@@ -70,12 +70,23 @@ WSGI_APPLICATION = 'blogproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Blogs',
+#         'USER': 'toufeeq',
+#         'PASSWORD': 'toufeeq',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Blogs',
-        'USER': 'toufeeq',
-        'PASSWORD': 'toufeeq',
+        'NAME': os.environ.get('Blogs'),
+        'USER': os.environ.get('toufeeq'),
+        'PASSWORD': os.environ.get('toufeeq'),
+        'HOST': os.environ.get(''),
+        'PORT': os.environ.get(''),
     }
 }
 
