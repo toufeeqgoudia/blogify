@@ -48,7 +48,7 @@ const PostDetails = () => {
   return (
     <>
       {post && (
-        <div className="w-full h-full p-5 flex flex-col mt-16 sm:w-3/4 sm:ml-25 sm:mt-0">
+        <div className="w-full min-h-screen p-5 flex flex-col mt-16 sm:w-3/4 sm:ml-25 sm:mt-0 dark:bg-black">
           <div className="self-start w-full flex items-center mb-4 sm:w-3/5 sm:justify-between">
             <HiArrowNarrowLeft
               className="text-2xl cursor-pointer text-slate-300 mr-10"
@@ -63,14 +63,14 @@ const PostDetails = () => {
                   name="profile_img"
                 />
               </div>
-              <h3 className="text-lg font-bold ml-4">{post.author.username}</h3>
+              <h3 className="text-lg font-bold ml-4 dark:text-slate-300">{post.author.username}</h3>
             </div>
           </div>
           <hr />
           <div className="mt-4">
-            <h4 className="text-lg font-medium mb-3">{post.title}</h4>
-            <p className="text-xs mb-3">{formatPostDate(post.date_posted)}</p>
-            <p className="text-sm">{post.content}</p>
+            <h4 className="text-lg font-medium mb-3 dark:text-slate-300">{post.title}</h4>
+            <p className="text-xs mb-3 dark:text-slate-300">{formatPostDate(post.date_posted)}</p>
+            <p className="text-sm dark:text-slate-300">{post.content}</p>
           </div>
         </div>
       )}

@@ -44,51 +44,51 @@ const SignIn = (props) => {
 
   return (
     <div className="w-full h-screen flex flex-col sm:flex-row">
-      <div className="w-full h-1/4 bg-emerald-500 flex justify-center items-end sm:w-2/5 sm:h-full sm:justify-end sm:items-center">
-        <div className="w-4/5 h-4/5 bg-emerald-500 shadow-3xl flex items-center justify-center">
+      <div className="w-full h-1/4 bg-emerald-400 flex justify-center items-end sm:w-2/5 sm:h-full sm:justify-end sm:items-center">
+        <div className="w-4/5 h-4/5 bg-emerald-400 shadow-3xl flex items-center justify-center">
           <h2 className="text-6xl text-white font-bold">blogify.</h2>
         </div>
       </div>
-      <div className="w-full h-3/4 bg-white flex items-start justify-center sm:w-3/5 sm:h-full sm:justify-start sm:items-center">
-        <div className="w-4/5 h-90 bg-white shadow-3xl sm:h-4/5">
+      <div className="w-full h-3/4 bg-white flex items-start justify-center sm:w-3/5 sm:h-full sm:justify-start sm:items-center dark:bg-black">
+        <div className="w-4/5 h-90 bg-white shadow-3xl sm:h-4/5 dark:bg-black dark:shadow-3xl-l">
           <form
             className="w-full h-full flex flex-col justify-center items-center"
             onSubmit={handleSubmit}
           >
-            <h2 className="text-xl font-bold mb-10">login.</h2>
+            <h2 className="text-xl font-bold mb-10 dark:text-slate-300">login.</h2>
             {fetchError && (
               <div className="p-2 bg-red-500 rounded mb-4 -mt-6">
                 <p>{fetchError}</p>
               </div>
             )}
-            <p className="mb-2">email.</p>
+            <p className="mb-2 dark:text-slate-300">email.</p>
             <input
               type="email"
               name="email"
               placeholder="youremail@email.com"
-              className="w-4/5 outline-none p-1 mb-5 text-center"
+              className="w-4/5 outline-none p-1 mb-5 text-center dark:bg-black dark:text-slate-300"
               autoComplete="on"
               onChange={handleChange}
             />
-            <p className="mb-2">password.</p>
+            <p className="mb-2 dark:text-slate-300">password.</p>
             <input
               type="password"
               name="password"
               placeholder="********"
-              className="w-4/5 outline-none p-1 mb-5 text-center"
+              className="w-4/5 outline-none p-1 mb-5 text-center dark:bg-black dark:text-slate-300"
               autoComplete="on"
               onChange={handleChange}
             />
             <button
               type="submit"
-              className="w-1/2 p-1 mt-5 mb-5 bg-emerald-500 rounded "
+              className="w-1/2 p-1 mt-5 mb-5 bg-emerald-400 rounded "
               disabled={loading}
             >
               login.
             </button>
             <button
               type="text"
-              className="bg-none underline cursor-pointer text-center text-sm"
+              className="bg-none underline cursor-pointer text-center text-sm dark:text-slate-300"
               onClick={() => props.onFormSwitch("register")}
             >
               Don`t have an account? Register here.

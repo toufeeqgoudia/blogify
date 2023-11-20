@@ -87,8 +87,8 @@ const Myblogs = () => {
 
   return (
     <>
-      <div className="w-full h-full p-5 flex flex-col mt-16 sm:w-3/4 sm:ml-25 sm:mt-0">
-        <h2 className="text-lg font-semibold self-center">my blogs.</h2>
+      <div className="w-full min-h-screen p-5 flex flex-col mt-16 sm:w-3/4 sm:ml-25 sm:mt-0 dark:bg-black">
+        <h2 className="text-lg font-semibold self-center dark:text-slate-300">my blogs.</h2>
         <hr />
 
         <div>
@@ -100,18 +100,18 @@ const Myblogs = () => {
                     src={post.author.profile_img}
                     className="w-7 h-7 rounded-full border-2 border-slate-200"
                   />
-                  <h3 className="text-lg font-bold ml-4">
+                  <h3 className="text-lg font-bold ml-4 dark:text-slate-300">
                     {post.author.username}
                   </h3>
                 </div>
-                <h4 className="text-lg font-medium">
+                <h4 className="text-lg font-medium dark:text-slate-300">
                   {post.title}
-                  <span className="text-xs">
+                  <span className="text-xs dark:text-slate-300">
                     {" "}
                     - {formatPostDate(post.date_posted)}
                   </span>
                 </h4>
-                <p className="text-sm" style={descStyles}>
+                <p className="text-sm dark:text-slate-300" style={descStyles}>
                   {post.content}
                 </p>
               </div>
@@ -129,7 +129,7 @@ const Myblogs = () => {
           ))}
         </div>
         <button
-          className="p-3 w-32 flex self-end items-center justify-evenly text-white bg-emerald-500 fixed rounded-full bottom-10 right-10 z-10"
+          className="p-3 w-32 flex self-end items-center justify-evenly text-white bg-emerald-400 fixed rounded-full bottom-10 right-10 z-10"
           onClick={() => navigate("/myblogs/create")}
         >
           <IoAddCircleOutline className="text-2xl font-bold text-white" />{" "}

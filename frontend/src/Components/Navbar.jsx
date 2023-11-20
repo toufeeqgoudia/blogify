@@ -22,7 +22,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full h-16 items-center flex fixed bg-emerald-500 shadow-xl sm:w-1/4 sm:h-screen sm:flex-col sm:pt-10">
+    <nav className="w-full h-16 items-center flex fixed bg-emerald-400 shadow-xl sm:w-1/4 sm:h-screen sm:flex-col sm:pt-10">
       <div
         className="w-12 h-12 rounded-full cursor-pointer overflow-hidden sm:self-center ml-8 sm:ml-0 sm:w-16 sm:h-16"
         onClick={() => navigate("/")}
@@ -38,7 +38,7 @@ const Navbar = () => {
       </div>
 
       <div
-        className={`flex flex-col items-end sm:items-center sm:h-1/2 sm:justify-evenly sm:pb-0 pb-6 sm:pt-0 pt-16 px-10 sm:px-0 absolute sm:static bg-emerald-500 sm:z-auto z-[-1] left-0 w-full sm:pl-0 pl-9 transition-all duration-500 ease-in ${
+        className={`flex flex-col items-end sm:items-center sm:h-1/2 sm:justify-evenly sm:pb-0 pb-6 sm:pt-0 pt-16 px-10 sm:px-0 absolute sm:static bg-emerald-400 sm:z-auto z-[-1] left-0 w-full sm:pl-0 pl-9 transition-all duration-500 ease-in ${
           expandNav ? "top-1" : "top-[-490px]"
         }`}
       >

@@ -12,7 +12,7 @@ const UserDetails = ({ post, isOpen, onClose }) => {
         <dialog
           open={isOpen}
           onClose={handleClose}
-          className="max-w-sm max-h-80 p-5 rounded-xl shadow-3xl self-center mx-auto sm:ml-50 mt-10"
+          className="max-w-sm max-h-80 p-5 rounded-xl shadow-3xl self-center mx-auto sm:ml-50 mt-10 dark:bg-black dark:shadow-3xl-l"
         >
           <div className="flex flex-col items-center pb-3">
             <IoCloseCircleOutline
@@ -24,13 +24,13 @@ const UserDetails = ({ post, isOpen, onClose }) => {
             </div>
           </div>
           <hr className="mb-3" />
-          <p className="pb-3 text-lg font-medium text-center">
+          <p className="pb-3 text-lg font-medium text-center dark:text-slate-300">
             {post.author.username}
           </p>
-          <p className="pb-3 text-lg font-medium text-center">
+          <p className="pb-3 text-lg font-medium text-center dark:text-slate-300">
             {post.author.full_name}
           </p>
-          <p className="pb-3 text-lg font-medium text-center">
+          <p className="pb-3 text-lg font-medium text-center dark:text-slate-300">
             {post.author.email}
           </p>
         </dialog>

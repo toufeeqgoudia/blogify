@@ -47,20 +47,20 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="w-full h-full p-5 flex flex-col mt-16 sm:w-3/4 sm:ml-25 sm:mt-0">
-      <h3 className="text-lg font-medium self-center">create post.</h3>
+    <div className="w-full min-h-screen p-5 flex flex-col mt-16 sm:w-3/4 sm:ml-25 sm:mt-0 dark:bg-black">
+      <h3 className="text-lg font-medium self-center dark:text-slate-300">create post.</h3>
       <hr />
       <form className="flex flex-col mt-3" onSubmit={handleCreate}>
-        <p className="font-medium mb-1">title.</p>
+        <p className="font-medium mb-1 dark:text-slate-300">title.</p>
         <input
           name="title"
-          className="w-full border-2 outline-none py-1 px-2 mb-2 rounded-lg"
+          className="w-full border-2 outline-none py-1 px-2 mb-2 rounded-lg dark:bg-black dark:text-slate-300"
           onChange={handleChange}
         />
-        <p className="font-medium mb-1">content.</p>
+        <p className="font-medium mb-1 dark:text-slate-300">content.</p>
         <textarea
           name="content"
-          className="w-full min-h-full border-2 outline-none py-1 px-2 mb-2 rounded-lg"
+          className="w-full min-h-full border-2 outline-none py-1 px-2 mb-2 rounded-lg dark:bg-black dark:text-slate-300"
           onChange={handleChange}
         />
         <div className="flex items-center justify-end my-3">
@@ -71,7 +71,7 @@ const CreatePost = () => {
             Cancel
           </p>
           <button
-            className="w-28 font-medium py-2 rounded-lg bg-black text-white"
+            className="w-28 font-medium py-2 rounded-lg bg-emerald-400 text-white"
             type="submit"
           >
             Save

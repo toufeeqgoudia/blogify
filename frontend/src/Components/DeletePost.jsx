@@ -22,9 +22,9 @@ const DeletePost = ({ selectedId, isOpen, onClose }) => {
         <dialog
           open={isOpen}
           onClose={handleClose}
-          className="w-72 h-40 p-5 flex flex-col justify-around rounded-xl shadow-3xl mt-32 mx-auto sm:ml-50 sm:mt-10"
+          className="w-72 h-40 p-5 flex flex-col justify-around rounded-xl shadow-3xl mt-32 mx-auto sm:ml-50 sm:mt-10 dark:bg-black dark:shadow-3xl-l"
         >
-          <p className="text-lg font-bold text-center">
+          <p className="text-lg font-bold text-center dark:text-slate-300">
             are you sure you want to delete this post?
           </p>
           <div className="w-full flex justify-between items-center">

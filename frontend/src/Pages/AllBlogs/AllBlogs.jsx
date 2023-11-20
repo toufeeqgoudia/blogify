@@ -62,8 +62,8 @@ const AllBlogs = () => {
   };
 
   return (
-    <div className="w-full h-full p-5 flex flex-col mt-16 sm:w-3/4 sm:ml-25 sm:mt-0">
-      <h2 className="text-lg font-semibold self-center">all blogs.</h2>
+    <div className="w-full h-full p-5 flex flex-col mt-16 sm:w-3/4 sm:ml-25 sm:mt-0 dark:bg-black">
+      <h2 className="text-lg font-semibold self-center dark:text-slate-300">all blogs.</h2>
       <hr />
       <div>
         {posts.map((post) => (
@@ -79,20 +79,20 @@ const AllBlogs = () => {
                 src={post.author.profile_img}
                 className="w-7 h-7 rounded-full border-2 border-slate-200"
               />
-              <h3 className="text-lg font-bold ml-4">{post.author.username}</h3>
+              <h3 className="text-lg font-bold ml-4 dark:text-slate-300">{post.author.username}</h3>
             </div>
             <div
               className="cursor-pointer"
               onClick={() => openPostDetails(post.id)}
             >
-              <h4 className="text-lg font-medium">
+              <h4 className="text-lg font-medium dark:text-slate-300">
                 {post.title}
-                <span className="text-xs">
+                <span className="text-xs dark:text-slate-300">
                   {" "}
                   - {formatPostDate(post.date_posted)}
                 </span>
               </h4>
-              <p className="text-sm" style={descStyles}>
+              <p className="text-sm dark:text-slate-300" style={descStyles}>
                 {post.content}
               </p>
             </div>
