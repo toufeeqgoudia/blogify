@@ -13,8 +13,8 @@ const DeletePost = ({ selectedId, isOpen, onClose }) => {
   };
 
   const handleClose = () => {
-    onClose()
-  }
+    onClose();
+  };
 
   return (
     <>
@@ -22,10 +22,10 @@ const DeletePost = ({ selectedId, isOpen, onClose }) => {
         <dialog
           open={isOpen}
           onClose={handleClose}
-          className="w-72 h-40 p-5 mt-14 ml-50 flex flex-col justify-evenly rounded-xl shadow-3xl"
+          className="w-72 h-40 p-5 flex flex-col justify-around rounded-xl shadow-3xl mt-32 mx-auto sm:ml-50 sm:mt-10"
         >
-          <p className="text-lg font-bold">
-            Are you sure you want to delete this post?
+          <p className="text-lg font-bold text-center">
+            are you sure you want to delete this post?
           </p>
           <div className="w-full flex justify-between items-center">
             <button

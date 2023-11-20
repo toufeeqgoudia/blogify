@@ -34,7 +34,7 @@ const SignIn = (props) => {
         navigate("/");
       }
 
-      window.location.reload()
+      window.location.reload();
     } catch (error) {
       setFetchError("failed to sign in.");
       console.log("Error: ", error);
@@ -43,14 +43,14 @@ const SignIn = (props) => {
   };
 
   return (
-    <div className="w-full h-screen flex">
-      <div className="w-2/5 h-full bg-emerald-500 flex items-center justify-end">
+    <div className="w-full h-screen flex flex-col sm:flex-row">
+      <div className="w-full h-1/4 bg-emerald-500 flex justify-center items-end sm:w-2/5 sm:h-full sm:justify-end sm:items-center">
         <div className="w-4/5 h-4/5 bg-emerald-500 shadow-3xl flex items-center justify-center">
           <h2 className="text-6xl text-white font-bold">blogify.</h2>
         </div>
       </div>
-      <div className="w-3/5 h-full bg-white flex items-center justify-start">
-        <div className="w-4/5 h-4/5 bg-white shadow-3xl">
+      <div className="w-full h-3/4 bg-white flex items-start justify-center sm:w-3/5 sm:h-full sm:justify-start sm:items-center">
+        <div className="w-4/5 h-90 bg-white shadow-3xl sm:h-4/5">
           <form
             className="w-full h-full flex flex-col justify-center items-center"
             onSubmit={handleSubmit}

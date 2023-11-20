@@ -8,28 +8,28 @@ export default AuthContext;
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-      const fetchUser = async () => {
-        const token = localStorage.getItem("token");
-        try {
-          const response = await instance.get("/api/user/", {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Token ${token}`,
-            },
-          });
-  
-          setUser(response.data);
-        } catch (error) {
-          console.log("Error: ", error);
-        }
-  
-        setLoading(false)
-      };
-  
-      fetchUser();
+    const fetchUser = async () => {
+      const token = localStorage.getItem("token");
+      try {
+        const response = await instance.get("/api/user/", {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Token ${token}`,
+          },
+        });
+
+        setUser(response.data);
+      } catch (error) {
+        console.log("Error: ", error);
+      }
+
+      setLoading(false);
+    };
+
+    fetchUser();
   }, []);
 
   return (

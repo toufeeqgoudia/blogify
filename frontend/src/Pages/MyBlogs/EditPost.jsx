@@ -48,7 +48,7 @@ const EditPost = () => {
   return (
     <>
       {post && (
-        <div className="w-3/4 h-full p-5 flex flex-col ml-25">
+        <div className="w-full h-full p-5 flex flex-col mt-16 sm:w-3/4 sm:ml-25 sm:mt-0">
           <h3 className="text-lg font-medium self-center">edit post.</h3>
           <hr />
           <form className="flex flex-col mt-3" onSubmit={handleEdit}>

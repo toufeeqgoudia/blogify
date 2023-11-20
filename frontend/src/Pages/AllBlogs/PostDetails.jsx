@@ -48,10 +48,10 @@ const PostDetails = () => {
   return (
     <>
       {post && (
-        <div className="w-3/4 h-full p-5 flex flex-col ml-25">
-          <div className="self-start w-3/5 flex items-center justify-between mb-4">
+        <div className="w-full h-full p-5 flex flex-col mt-16 sm:w-3/4 sm:ml-25 sm:mt-0">
+          <div className="self-start w-full flex items-center mb-4 sm:w-3/5 sm:justify-between">
             <HiArrowNarrowLeft
-              className="text-2xl cursor-pointer text-slate-300"
+              className="text-2xl cursor-pointer text-slate-300 mr-10"
               onClick={() => navigate(-1)}
             />
             <div className="flex items-center">
