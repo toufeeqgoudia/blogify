@@ -15,7 +15,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "secret_key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", True)
 
-ALLOWED_HOSTS = [".onrender.com"]
+ALLOWED_HOSTS = ['blogify-webapp.onrender.com', '127.0.0.1']
 
 
 # Application definition
@@ -123,12 +123,14 @@ AUTH_USER_MODEL = 'api.User'
 
 CORS_ALLOWED_ORIGINS = [
     "https://blogifywebapp.netlify.app",
+    "http://localhost:5173",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
     "https://blogifywebapp.netlify.app",
+    "http://localhost:5173",
 ]
 
 CORS_ALLOW_HEADERS = (
