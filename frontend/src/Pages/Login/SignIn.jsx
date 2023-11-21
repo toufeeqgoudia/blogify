@@ -45,7 +45,7 @@ const SignIn = (props) => {
   return (
     <div className="w-full h-screen flex flex-col sm:flex-row">
       <div className="w-full h-1/4 bg-emerald-400 flex justify-center items-end sm:w-2/5 sm:h-full sm:justify-end sm:items-center">
-        <div className="w-4/5 h-4/5 bg-emerald-400 shadow-3xl flex items-center justify-center">
+        <div className="w-4/5 h-4/5 bg-emerald-400 shadow-3xl flex items-center justify-center dark:shadow-3xl-l">
           <h2 className="text-6xl text-white font-bold">blogify.</h2>
         </div>
       </div>

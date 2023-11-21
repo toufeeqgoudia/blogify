@@ -1,21 +1,44 @@
 # Welcome to Blogify
-Blogify is a simple, easy-to-use blogging platform built with Django and ReactJS and PostgreSQL. It allows users to view blogs posted by other users and post their own blogs too.
+Blogify is a simple, easy-to-use blogging platform built with Django and ReactJS. It allows users to view blogs posted by other users and post their own blogs too.
 
-## User Stories
-- A user must be able to login / register
-- A user must be able to see blogs from other bloggers
-- A user must be able to create a blog
-- A user must be able to update their blog
-- A user must be able to delete their blog
-- A user must be able to edit their name
-- A user must be able to edit their email
-- A user must be able to change their password
-- A user must be able to add/change their profile picture
-- A user can switch between light and dark mode
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1cbb61a6-afd4-46e3-9782-9cb465f5bd65/deploy-status)](https://app.netlify.com/sites/blogifywebapp/deploys)
 
-## Figma
-- [Figma Blogify](https://www.figma.com/file/0E93QXa142HlrUnbTgd6pw/Blog-App-(Full-Stack)?type=design&node-id=0-1&mode=design&t=XVygaw1f3b3orXPZ-0)
+Visit the live app at [blogify.](https://blogifywebapp.netlify.app/).
 
-### Author
-Toufeeq Goudia
-- Email: toufeeqgoudia@gmail.com
+## Features
+- Login / Register
+- Minimal Design
+- Create / View / Edit / Delete Your Posts
+- User Profile
+- View / Edit Your Details
+- Light / Dark mode
+
+## Installation
+
+### Backend Setup
+- Clone this repository: `git clone https://github.com/toufeeqgoudia/blogify.git`.
+- Change the current directory to `backend` folder: `cd backend`.
+- Create a virtual environment: `python -m venv venv`.
+- Activate the virtual environment: 
+  - On Windows: `venv/Scripts/activate`.
+  - On Unix or MacOS: `source venv/bin/activate`.
+- Make sure that pip is up-to-date by running: `python -m pip install --upgrade pip`.
+- Install all backend dependencies: `pip install -r requirements.txt`.
+- Run `python manage.py makemigrations`.
+- Run `python manage.py migrate`.
+- Create a superuser: `python manage.py createsuperuser`.
+- Run the server: `python manage.py runserver`.
+
+### Frontend Setup
+- Open a new terminal
+- Change the current directory to `frontend` folder: `cd frontend`.
+- Install all the frontend dependencies: `npm install`.
+- Run the server: `npm run dev`.
+
+### Contribution Guidelines
+- Found a bug or have a suggestion? [Open an issue](https://github.com/toufeeqgoudia/blogify/issues).
+
+### Acknowledgements
+- Backend built with Django.
+- Frontend built with ReactJS.
+
