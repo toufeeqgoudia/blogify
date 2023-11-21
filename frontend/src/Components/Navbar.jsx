@@ -61,7 +61,7 @@ const Navbar = () => {
         >
           <div className="w-7 h-7 rounded-full border-2 overflow-hidden">
             <img
-              src={`${baseUrl}/media/${user.profile_img}`}
+              src={`${baseUrl}${user.profile_img}`}
               alt="User Profile Image"
               className="w-full h-full"
             />

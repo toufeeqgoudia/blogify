@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Hooks/useAuth";
 import { instance } from "../../utils/apiService";
 import { updateDetails, updateImage } from "../../utils/updateProfile";
@@ -16,6 +17,7 @@ const Profile = ({ theme, setTheme }) => {
     oldPassword: "",
     newPassword: "",
   });
+  const navigate = useNavigate();
 
   const handleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -73,7 +75,7 @@ const Profile = ({ theme, setTheme }) => {
     try {
       await instance.post("/api/logout/");
       localStorage.removeItem("token");
-      window.location.reload();
+      navigate('/login')
     } catch (error) {
       console.log("error logging out: ", error);
     }
@@ -91,7 +93,7 @@ const Profile = ({ theme, setTheme }) => {
           <div className="w-full h-full flex flex-col">
             <div className="w-24 h-24 rounded-full border-2 border-slate-300 object-cover overflow-hidden mb-3">
               <img
-                src={`${baseUrl}/media/${user.profile_img}`}
+                src={`${baseUrl}${user.profile_img}`}
                 alt="Profile Photo"
                 className="w-full h-full"
                 name="profile_img"

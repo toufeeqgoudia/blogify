@@ -57,7 +57,7 @@ const PostDetails = () => {
             <div className="flex items-center">
               <div className="w-10 h-10 rounded-full border-2 border-slate-300 object-cover overflow-hidden">
                 <img
-                  src={`${baseUrl}/media/${post.author.profile_img}`}
+                  src={`${baseUrl}${post.author.profile_img}`}
                   alt="Profile Photo"
                   className="w-full h-full"
                   name="profile_img"
