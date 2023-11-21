@@ -16,23 +16,6 @@ const Profile = ({ theme, setTheme }) => {
     oldPassword: "",
     newPassword: "",
   });
-  // const [theme, setTheme] = useState(null)
-
-  // useEffect(() => {
-  //   if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  //     setTheme("dark")
-  //   } else {
-  //     setTheme("light")
-  //   }
-  // }, [])
-
-  // useEffect(() => {
-  //   if (theme === "dark") {
-  //     document.documentElement.classList.add("dark")
-  //   } else {
-  //     document.documentElement.classList.remove("dark")
-  //   }
-  // }, [theme])
 
   const handleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -108,7 +91,7 @@ const Profile = ({ theme, setTheme }) => {
           <div className="w-full h-full flex flex-col">
             <div className="w-24 h-24 rounded-full border-2 border-slate-300 object-cover overflow-hidden mb-3">
               <img
-                src={`${baseUrl}${user.profile_img}`}
+                src={`${baseUrl}/media/${user.profile_img}`}
                 alt="Profile Photo"
                 className="w-full h-full"
                 name="profile_img"
