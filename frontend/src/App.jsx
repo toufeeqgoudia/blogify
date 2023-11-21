@@ -25,19 +25,19 @@ const App = () => {
   }, [theme]);
 
   return (
-    <AuthProvider>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/*"
-          element={
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/*"
+        element={
+          <AuthProvider>
             <ProtectedRoute>
               <Home theme={theme} setTheme={setTheme} />
             </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </AuthProvider>
+          </AuthProvider>
+        }
+      />
+    </Routes>
   );
 };
 

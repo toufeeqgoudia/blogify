@@ -62,7 +62,7 @@ const AllBlogs = () => {
   };
 
   return (
-    <div className="w-full h-full p-5 flex flex-col mt-16 sm:w-3/4 sm:ml-25 sm:mt-0 dark:bg-black">
+    <div className="w-full min-h-screen p-5 flex flex-col mt-16 sm:w-3/4 sm:ml-25 sm:mt-0 dark:bg-black">
       <h2 className="text-lg font-semibold self-center dark:text-slate-300">all blogs.</h2>
       <hr />
       <div>

@@ -70,8 +70,14 @@ WSGI_APPLICATION = 'blogproject.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+DATABASES['default'] = dj_database_url.parse('postgres://blogify_db_user:SUVaPkF5x8myTp9fr1cqwdATKsrBwxyn@dpg-cldtdn6f27hc738i6h30-a.oregon-postgres.render.com/blogify_db')
+# DATABASES['default'] = dj_database_url.parse(os.environ.get('DATABASE_URL'))
 
 
 # Password validation
