@@ -12,7 +12,7 @@ const UserDetails = ({ post, isOpen, onClose }) => {
         <dialog
           open={isOpen}
           onClose={handleClose}
-          className="max-w-sm max-h-80 p-5 rounded-xl shadow-3xl self-center mx-auto sm:ml-50 mt-10 dark:bg-black dark:shadow-3xl-l"
+          className="w-80 max-h-80 p-5 rounded-xl shadow-3xl self-center mx-auto sm:ml-50 mt-10 dark:bg-black dark:shadow-3xl-l"
         >
           <div className="flex flex-col items-center pb-3">
             <IoCloseCircleOutline
