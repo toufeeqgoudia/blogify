@@ -76,8 +76,7 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.parse('postgres://blogify_db_user:SUVaPkF5x8myTp9fr1cqwdATKsrBwxyn@dpg-cldtdn6f27hc738i6h30-a.oregon-postgres.render.com/blogify_db')
-# DATABASES['default'] = dj_database_url.parse(os.environ.get('DATABASE_URL'))
+DATABASES['default'] = dj_database_url.parse(os.environ.get('DATABASE_URL'))
 
 
 # Password validation
