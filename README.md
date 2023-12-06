@@ -1,10 +1,6 @@
 # Welcome to Blogify
 Blogify is a simple, easy-to-use blogging platform built with Django and ReactJS. It allows users to view blogs posted by other users and post their own blogs too.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/1cbb61a6-afd4-46e3-9782-9cb465f5bd65/deploy-status)](https://app.netlify.com/sites/blogifywebapp/deploys)
-
-Visit the live app at [blogify.](https://blogifywebapp.netlify.app/).
-
 ## Features
 - Login / Register
 - Minimal Design

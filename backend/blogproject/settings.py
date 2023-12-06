@@ -10,12 +10,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY", "secret_key")
+SECRET_KEY = 'django-insecure-@9xn&%y!4w49*_=$)83o_1ozq$nfnw04cju4yllxo@=+5+xlh1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", True)
+DEBUG = True
 
-ALLOWED_HOSTS = ['blogify-webapp.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -76,8 +76,6 @@ DATABASES = {
     }
 }
 
-DATABASES['default'] = dj_database_url.parse(os.environ.get('DATABASE_URL'))
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -127,25 +125,11 @@ AUTH_USER_MODEL = 'api.User'
 # CORSHEADERS SETTINGS
 
 CORS_ALLOWED_ORIGINS = [
-    "https://blogifywebapp.netlify.app",
     "http://localhost:5173",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://blogifywebapp.netlify.app",
-    "http://localhost:5173",
-]
-
-CORS_ALLOW_HEADERS = (
-    "accept",
-    "authorization",
-    "content-type",
-    "user-agent",
-    "x-csrftoken",
-    "x-requested-with",
-)
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
